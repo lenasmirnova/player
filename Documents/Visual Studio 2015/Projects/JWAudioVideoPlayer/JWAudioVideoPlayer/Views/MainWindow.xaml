@@ -1,0 +1,39 @@
+﻿<Window x:Class="JWAudioVideoPlayer.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JWAudioVideoPlayer.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowState="Maximized">
+    <Window.Resources>
+    <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <TabControl Grid.Row="1">
+            <TabItem Header="CZAS" Tag="CZAS">
+                <local:TimerV DataContext="{Binding Timer}" />
+            </TabItem>
+            <TabItem Header="PIEŚNI">
+                <local:MusicPlayerV  DataContext="{Binding MusicPlayer}"/>
+            </TabItem>
+            <TabItem Header="FILMY">
+                <local:VideoPlayerV  DataContext="{Binding VideoPlayer}"/>
+            </TabItem>
+            <TabItem Header="STRONA">
+                <local:WebsiteV />
+            </TabItem>
+        </TabControl>
+        <Button Grid.Row="2" Content="Pokaż ekran" Command="{Binding ShowSecondScreenCommand}" Margin="30" Style="{StaticResource SecondScreenButtonStyle}" />
+    </Grid>
+</Window>

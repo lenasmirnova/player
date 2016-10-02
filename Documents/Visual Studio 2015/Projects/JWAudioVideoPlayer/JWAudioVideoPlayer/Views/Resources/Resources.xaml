@@ -1,0 +1,206 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:JWAudioVideoPlayer"
+                    xmlns:Converters="clr-namespace:JWAudioVideoPlayer.Converters">
+
+    
+    <Converters:TabItemImageConverter x:Key="tabItemImageConverter" />
+    <Converters:PlayerButtonImageConverter x:Key="playerButtonImageConverter" />
+    
+    <SolidColorBrush x:Key="MainWindowBackground" Color="#ff42454A" />
+    
+    <SolidColorBrush x:Key="ButtonNormal" Color="#ff173987" />
+    <SolidColorBrush x:Key="ButtonMouseOver" Color="#ff3164D9" />
+    <SolidColorBrush x:Key="ButtonPressed" Color="#ff6693FB" />
+    <SolidColorBrush x:Key="ButtonFont" Color="White" />
+
+    <SolidColorBrush x:Key="SecondScreenButtonNormal" Color="#ff12905A" />
+    <SolidColorBrush x:Key="SecondScreenButtonMouseOver" Color="#ff59F5B2" />
+    <SolidColorBrush x:Key="SecondScreenButtonPressed" Color="#ff137B4E" />
+    
+    <SolidColorBrush x:Key="MainTabNormal" Color="#ff3665D1" />
+    <SolidColorBrush x:Key="MainTabMouseOver" Color="#ff719AF8" />
+    <SolidColorBrush x:Key="MainTabSelected" Color="#ff1E3F8C" />
+    
+    <Style TargetType="{x:Type Grid}">
+        <Setter Property="Background" Value="{StaticResource MainWindowBackground}" />
+    </Style>
+    <Style TargetType="{x:Type DockPanel}">
+        <Setter Property="Background" Value="{StaticResource MainWindowBackground}" />
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Height" Value="35" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Height" Value="35" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="Height" Value="35" />
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Background" Value="{StaticResource ButtonNormal}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonNormal}" />
+        <Setter Property="Foreground" Value="{StaticResource ButtonFont}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontFamily" Value="Verdana" />
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{StaticResource ButtonNormal}" x:Name="buttonBorder">
+                        <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Border.Background" TargetName="buttonBorder" Value="{StaticResource ButtonMouseOver}" />
+                            <Setter Property="Border.BorderBrush" TargetName="buttonBorder" Value="{StaticResource ButtonMouseOver}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Border.Background" TargetName="buttonBorder" Value="{StaticResource ButtonPressed}" />
+                            <Setter Property="Border.BorderBrush" TargetName="buttonBorder" Value="{StaticResource ButtonPressed}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="SecondScreenButtonStyle">
+        <Setter Property="Height" Value="35" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Background" Value="{StaticResource SecondScreenButtonNormal}" />
+        <Setter Property="BorderBrush" Value="{StaticResource SecondScreenButtonNormal}" />
+        <Setter Property="Foreground" Value="{StaticResource ButtonFont}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontFamily" Value="Verdana" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{StaticResource SecondScreenButtonNormal}" x:Name="buttonBorder1">
+                        <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Border.Background" TargetName="buttonBorder1" Value="{StaticResource SecondScreenButtonMouseOver}" />
+                            <Setter Property="Border.BorderBrush" TargetName="buttonBorder1" Value="{StaticResource SecondScreenButtonMouseOver}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Border.Background" TargetName="buttonBorder1" Value="{StaticResource SecondScreenButtonPressed}" />
+                            <Setter Property="Border.BorderBrush" TargetName="buttonBorder1" Value="{StaticResource SecondScreenButtonPressed}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Button" x:Key="PlayerButtonStyle">
+        <Setter Property="Height" Value="35" />
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Background" Value="{StaticResource ButtonNormal}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonNormal}" />
+        <Setter Property="Foreground" Value="{StaticResource ButtonFont}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontFamily" Value="Verdana" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <StackPanel Orientation="Horizontal" Background="{StaticResource ButtonNormal}" x:Name="playerButtonBorder">
+                        <Path Margin="3" Stretch="Fill" Width="20" Height="20" Fill="White" Data="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content, Converter={StaticResource playerButtonImageConverter}}"/>
+                        <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                    </StackPanel>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Border.Background" TargetName="playerButtonBorder" Value="{StaticResource ButtonMouseOver}" />
+                            <Setter Property="Border.BorderBrush" TargetName="playerButtonBorder" Value="{StaticResource ButtonMouseOver}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Border.Background" TargetName="playerButtonBorder" Value="{StaticResource ButtonPressed}" />
+                            <Setter Property="Border.BorderBrush" TargetName="playerButtonBorder" Value="{StaticResource ButtonPressed}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style TargetType="TabItem">
+        <Setter Property="Foreground" Value="{StaticResource ButtonFont}" />
+        <Setter Property="FontWeight" Value="DemiBold" />
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <StackPanel Name="Panel" Width="100" Height="70" Margin="20,10,0,0">
+                        <Path Margin="0 10 0 5" Stretch="Fill" Width="30" Height="30" Fill="White" Data="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Header, Converter={StaticResource tabItemImageConverter}}"/>
+                        <ContentPresenter x:Name="ContentSite"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="10,2"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Panel" Property="Background" Value="{StaticResource MainTabSelected}" />
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Panel" Property="Background" Value="{StaticResource MainTabNormal}" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Panel" Property="Background" Value="{StaticResource MainTabSelected}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style  TargetType="{x:Type TabControl}">
+        <Setter Property="OverridesDefaultStyle"
+          Value="True" />
+        <Setter Property="SnapsToDevicePixels"
+          Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabControl}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="10" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TabPanel x:Name="HeaderPanel"
+                                    Grid.Row="0"
+                                    Panel.ZIndex="1"
+                                    Margin="0,0,4,-1"
+                                    IsItemsHost="True"
+                                    KeyboardNavigation.TabIndex="1"
+                                    Background="Transparent" />
+                        <Rectangle Grid.Row="1" Fill="{StaticResource MainTabSelected}" />
+                        <Border x:Name="Border"
+                              Grid.Row="2" >          
+                        
+                            <ContentPresenter x:Name="PART_SelectedContentHost"
+                              ContentSource="SelectedContent" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
