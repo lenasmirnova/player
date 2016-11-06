@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Documents/Visual Studio 2015/Projects/JWAudioVideoPlayer/JWAudioVideoPlayer/obj/Debug
+*.suo
+/Documents/Visual Studio 2015/Projects/JWAudioVideoPlayer/JWAudioVideoPlayer/bin/Debug

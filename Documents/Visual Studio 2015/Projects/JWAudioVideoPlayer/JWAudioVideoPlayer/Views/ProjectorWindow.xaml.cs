@@ -30,6 +30,12 @@ namespace JWAudioVideoPlayer.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Maximized;
+            this.Visibility = Visibility.Collapsed;
+            this.Topmost = true;
+            this.WindowStyle = WindowStyle.None;
+            this.ResizeMode = ResizeMode.NoResize;
+            // re-show the window after changing style
+            this.Visibility = Visibility.Visible;
         }
     }
 }
