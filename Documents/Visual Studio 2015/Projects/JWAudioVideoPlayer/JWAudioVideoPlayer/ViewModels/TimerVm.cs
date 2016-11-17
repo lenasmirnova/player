@@ -24,7 +24,7 @@ namespace JWAudioVideoPlayer.ViewModels
 
         private void RefreshPrintedTime()
         {
-            CurrentTimeString = _timeSpan.ToString("c");
+            CurrentTimeString = _timeSpan.ToString(@"mm\:ss");
         }
 
         private DispatcherTimer _timer { get; set; }
