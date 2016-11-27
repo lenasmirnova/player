@@ -19,10 +19,10 @@ namespace JWAudioVideoPlayer.Converters
             if (parameter == null)
                 throw new ArgumentNullException("parameter");
 
-            int intValue = (int)value;
-            int intParameter = (int)parameter;
+            string stringValue = value.ToString();
+            string stringParameter = parameter.ToString();
 
-            if (intValue == intParameter)
+            if (stringValue.Equals(stringParameter))
                 return Visibility.Visible;
 
             else

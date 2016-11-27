@@ -13,15 +13,13 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Resources.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <sys:Int32 x:Key="IntZero">0</sys:Int32>
-            <sys:Int32 x:Key="IntOne">1</sys:Int32>
         </ResourceDictionary>
     </UserControl.Resources>
     
     <Grid Background="Black" Visibility="{Binding ProjectorEnabled, Converter={StaticResource boolToVisibilityConverter}}">
-        <local:TimerProjectorV Visibility="{Binding ProjectedTabIndex, Converter={StaticResource projectorContentConverter}, ConverterParameter={StaticResource IntZero}}" DataContext="{Binding Timer}"/>
-        <Image Visibility="{Binding ProjectedTabIndex, Converter={StaticResource projectorContentConverter}, ConverterParameter={StaticResource IntOne}}" Source="{Binding MusicPlayer.SelectedSongLyrics}"/>
+        <local:TimerProjectorV Visibility="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}, Path=DataContext.ProjectedTabIndex, Converter={StaticResource projectorContentConverter}, ConverterParameter=0}" DataContext="{Binding Timer}"/>
+        <Image Visibility="{Binding ProjectedTabIndex, Converter={StaticResource projectorContentConverter}, ConverterParameter=1}" Source="{Binding MusicPlayer.SelectedSongLyrics}"/>
         <!--<local:VideoPlayerV />-->
-        <!--<local:WebsiteV />-->
+        <local:WebsiteV Visibility="{Binding ProjectedTabIndex, Converter={StaticResource projectorContentConverter}, ConverterParameter=3}"/>
     </Grid>
 </UserControl>

@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="Black" >
-        <Viewbox  StretchDirection="UpOnly" Stretch="Uniform" >
+        <Viewbox  StretchDirection="UpOnly" Stretch="Uniform">
             <Label Content="{Binding CurrentTimeString}" Foreground="White" />
         </Viewbox>
     </Grid>

@@ -83,8 +83,8 @@ namespace JWAudioVideoPlayer
             {
                 ProjectorWindow = new ProjectorWindowV();
                 ProjectorWindow.DataContext = this;
+                ProjectorWindow.ShowOnSecondScreen();
             }
-            ProjectorWindow.ShowOnSecondScreen();
         }
         #endregion
     }
