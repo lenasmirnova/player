@@ -6,6 +6,8 @@
     
     <Converters:TabItemImageConverter x:Key="tabItemImageConverter" />
     <Converters:PlayerButtonImageConverter x:Key="playerButtonImageConverter" />
+    <Converters:BoolToVisibilityConverter x:Key="boolToVisibilityConverter" />
+    <Converters:ProjectorContentConverter x:Key="projectorContentConverter" />
     
     <SolidColorBrush x:Key="MainWindowBackground" Color="#ff42454A" />
     
@@ -106,7 +108,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="Button" x:Key="PlayerButtonStyle">
+    <Style TargetType="Button" x:Key="TimerButtonStyle">
         <Setter Property="Height" Value="35" />
         <Setter Property="Width" Value="200" />
         <Setter Property="Background" Value="{StaticResource ButtonNormal}" />
@@ -118,11 +120,14 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <StackPanel Orientation="Horizontal" Background="{StaticResource ButtonNormal}" x:Name="playerButtonBorder">
+                    <Grid Background="{StaticResource ButtonNormal}" x:Name="playerButtonBorder">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
                         <Path Margin="3" Stretch="Fill" Width="20" Height="20" Fill="White" Data="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content, Converter={StaticResource playerButtonImageConverter}}"/>
-                        <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
-                    </StackPanel>
-
+                        <ContentPresenter Grid.Column="1" x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                    </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Border.Background" TargetName="playerButtonBorder" Value="{StaticResource ButtonMouseOver}" />
@@ -138,7 +143,38 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <Style TargetType="Button" x:Key="PlayerButtonStyle">
+        <Setter Property="Height" Value="30" />
+        <Setter Property="Width" Value="30" />
+        <Setter Property="Background" Value="{StaticResource ButtonNormal}" />
+        <Setter Property="BorderBrush" Value="{StaticResource ButtonNormal}" />
+        <Setter Property="Foreground" Value="{StaticResource ButtonFont}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="FontFamily" Value="Verdana" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Background="{StaticResource ButtonNormal}" x:Name="playerButtonBorder">
+                        <Path Margin="3" Stretch="Fill" Width="15" Height="15" Fill="White" Data="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Content, Converter={StaticResource playerButtonImageConverter}}"/>
+                   </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Border.Background" TargetName="playerButtonBorder" Value="{StaticResource ButtonMouseOver}" />
+                            <Setter Property="Border.BorderBrush" TargetName="playerButtonBorder" Value="{StaticResource ButtonMouseOver}" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Border.Background" TargetName="playerButtonBorder" Value="{StaticResource ButtonPressed}" />
+                            <Setter Property="Border.BorderBrush" TargetName="playerButtonBorder" Value="{StaticResource ButtonPressed}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="TabItem">
         <Setter Property="Foreground" Value="{StaticResource ButtonFont}" />
         <Setter Property="FontWeight" Value="DemiBold" />

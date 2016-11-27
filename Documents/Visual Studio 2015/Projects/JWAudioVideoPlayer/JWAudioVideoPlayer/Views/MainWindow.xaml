@@ -19,8 +19,11 @@
             <RowDefinition Height="2*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        <Grid Margin="20">
+            <local:ProjectorContentV Width="400"/>
+        </Grid>
         
-        <TabControl Grid.Row="1">
+        <TabControl Grid.Row="1" SelectedIndex="{Binding SelectedTabIndex}">
             <TabItem Header="CZAS" Tag="CZAS">
                 <local:TimerV DataContext="{Binding Timer}" />
             </TabItem>

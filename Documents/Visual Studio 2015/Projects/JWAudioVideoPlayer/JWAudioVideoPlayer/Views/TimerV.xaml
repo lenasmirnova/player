@@ -17,11 +17,7 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Background="Black" Margin="30">
-        <Viewbox  StretchDirection="UpOnly" Stretch="Uniform" >
-            <Label Content="{Binding CurrentTimeString}" Foreground="White" />
-        </Viewbox>
-        </Grid>
+        <local:TimerProjectorV Margin="30" />
         <Grid Grid.Column="1" Margin="30">
             <Grid VerticalAlignment="Center">
                 <Grid.RowDefinitions>
@@ -30,13 +26,15 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <Button Style="{StaticResource PlayerButtonStyle}" Content="START" Margin="5"/>
-                <Button Grid.Row="1" Content="STOP" Margin="5"/>
-                <Button Grid.Row="2" Content="DO PRZODU" Margin="5"/>
-                <Button Grid.Row="3" Content="DO TYŁU" Margin="5"/>
-                <Button Grid.Row="4" Content="ZERUJ" Margin="5"/>
+                <Button Style="{StaticResource TimerButtonStyle}" Content="START" Margin="5"/>
+                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="1" Content="PAUZA" Margin="5"/>
+                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="2" Content="STOP" Margin="5"/>
+                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="3" Content="DO PRZODU" Margin="5"/>
+                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="4" Content="DO TYŁU" Margin="5"/>
+                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="5" Content="ZERUJ" Margin="5"/>
             </Grid>
         </Grid>
 

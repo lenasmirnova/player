@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using JWAudioVideoPlayer.ViewModels;
+using Microsoft.Win32;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -61,6 +62,7 @@ namespace JWAudioVideoPlayer.Views
 
         private void Play_Executed(object sender, RoutedEventArgs e)
         {
+            var vm = DataContext as VideoPlayerVm;
             mePlayer.Volume = 100;
             mePlayer.Play();
             mediaPlayerIsPlaying = true;

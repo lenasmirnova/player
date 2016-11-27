@@ -35,10 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AxInterop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\Desktop\JW_Audio_Video\JW_Audio_Video\bin\Debug\AxInterop.WMPLib.dll</HintPath>
-    </Reference>
     <Reference Include="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -78,10 +74,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\PlayerButtonImageConverter.cs" />
+    <Compile Include="Converters\ProjectorContentConverter.cs" />
     <Compile Include="Converters\TabItemImageConverter.cs" />
     <Compile Include="Parameters.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Song.cs" />
     <Compile Include="ViewModels\MusicPlayerVm.cs" />
     <Compile Include="ViewModels\TimerVm.cs" />
     <Compile Include="ViewModels\VideoPlayerVm.cs" />
@@ -92,8 +91,20 @@
     <Compile Include="Views\MusicPlayerV.xaml.cs">
       <DependentUpon>MusicPlayerV.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProjectorContentV.xaml.cs">
+      <DependentUpon>ProjectorContentV.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ProjectorWindow.xaml.cs">
       <DependentUpon>ProjectorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Projector\LyricsProjector.xaml.cs">
+      <DependentUpon>LyricsProjector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Projector\TimerProjectorV.xaml.cs">
+      <DependentUpon>TimerProjectorV.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Projector\VideoProjectorV.xaml.cs">
+      <DependentUpon>VideoProjectorV.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TimerV.xaml.cs">
       <DependentUpon>TimerV.xaml</DependentUpon>
@@ -104,16 +115,8 @@
     <Compile Include="Views\WebsiteV.xaml.cs">
       <DependentUpon>WebsiteV.xaml</DependentUpon>
     </Compile>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\MainWindow.xaml">
@@ -124,9 +127,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\ProjectorContentV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ProjectorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Projector\LyricsProjector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Projector\TimerProjectorV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Projector\VideoProjectorV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Resources\Resources.xaml">
       <Generator>MSBuild:Compile</Generator>

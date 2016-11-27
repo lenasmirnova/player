@@ -7,10 +7,7 @@
         mc:Ignorable="d"
         Title="ProjectorWindow" WindowStartupLocation="Manual" >
     
-    <Grid>
-        <local:TimerV DataContext="{Binding Timer}"/>
-        <!--<local:VideoPlayerV />-->
-        <!--<local:WebsiteV />-->
-        <!--<local:VideoPlayerV  DataContext="{Binding VideoPlayer}"/>-->
+    <Grid Background="Black">
+        <local:ProjectorContentV />
     </Grid>
 </Window>
