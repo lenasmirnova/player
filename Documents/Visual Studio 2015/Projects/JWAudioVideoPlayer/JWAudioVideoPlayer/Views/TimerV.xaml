@@ -27,14 +27,16 @@
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
                     <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
 
-                <Button Style="{StaticResource TimerButtonStyle}" Content="START" Margin="5"/>
-                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="1" Content="PAUZA" Margin="5"/>
-                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="2" Content="STOP" Margin="5"/>
-                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="3" Content="DO PRZODU" Margin="5"/>
-                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="4" Content="DO TYŁU" Margin="5"/>
-                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="5" Content="ZERUJ" Margin="5"/>
+                <Button Style="{StaticResource TimerButtonStyle}" Content="START" Margin="4" Command="{Binding StartTimerCommand}"/>
+                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="1" Content="PAUZA" Margin="4" Command="{Binding PauseTimerCommand}"/>
+                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="2" Content="STOP" Margin="4" Command="{Binding StopTimerCommand}"/>
+                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="3" Content="DO PRZODU" Margin="4" Command="{Binding ForwardTimerCommand}"/>
+                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="4" Content="DO TYŁU" Margin="4" Command="{Binding RewindTimerCommand}"/>
+                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="5" Content="ZERUJ" Margin="4" Command="{Binding ClearTimerCommand}"/>
+                <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="6" Content="ZEGAR" Margin="4" Command="{Binding ShowCurrentTimeCommand}"/>
             </Grid>
         </Grid>
 

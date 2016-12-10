@@ -8,7 +8,7 @@ namespace JWAudioVideoPlayer
         public Song(string path, string title)
         {
             Path = path;
-            Title = title;
+            Title = GetTitle(title);
             Number = GetSongNumber();
         }
         #endregion
@@ -33,6 +33,14 @@ namespace JWAudioVideoPlayer
             }
 
             return number;
+        }
+
+        private string GetTitle(string title)
+        {
+            if (title.Contains(".mp3"))
+                title = title.Replace(".mp3", string.Empty);
+
+            return title;
         }
         #endregion
     }

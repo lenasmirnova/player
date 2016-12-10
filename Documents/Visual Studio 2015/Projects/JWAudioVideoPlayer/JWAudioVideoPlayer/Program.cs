@@ -2,6 +2,7 @@
 using JWAudioVideoPlayer.Views;
 using Prism.Commands;
 using Prism.Mvvm;
+using System.ComponentModel;
 
 namespace JWAudioVideoPlayer
 {
@@ -79,6 +80,7 @@ namespace JWAudioVideoPlayer
             ProjectedTabIndex = SelectedTabIndex;
             ProjectorEnabled = true;
 
+            //if (ProjectorWindow == null || !ProjectorWindow.IsActive)
             if (ProjectorWindow == null)
             {
                 ProjectorWindow = new ProjectorWindowV();
@@ -86,6 +88,12 @@ namespace JWAudioVideoPlayer
                 ProjectorWindow.ShowOnSecondScreen();
             }
         }
-        #endregion
+
+        internal void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            if (ProjectorWindow != null)
+                ProjectorWindow.Close();
+        }
+        #endregion 
     }
 }

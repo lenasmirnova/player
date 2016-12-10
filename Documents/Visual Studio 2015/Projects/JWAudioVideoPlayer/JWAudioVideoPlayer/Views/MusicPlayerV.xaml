@@ -13,67 +13,68 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    
-    <Grid Margin="15">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto" />
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="auto"/>
-        </Grid.ColumnDefinitions>
 
-        <!--<Label Content="Folder z plikami audio" />
+    <Grid Margin="15">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!--<Label Content="Folder z plikami audio" />
         <TextBox Grid.Column="1" x:Name="SongSourceFolder" HorizontalAlignment="Stretch"/>
         <Button Grid.Column="2" Content="Przeglądaj" HorizontalAlignment="Right"></Button>
 
         <Label Grid.Row="1" Content="Folder z plikami graficznymi" />
         <TextBox Grid.Row="1" Grid.Column="1" x:Name="TextSourceFolder" HorizontalAlignment="Stretch"/>
         <Button Grid.Row="1" Grid.Column="2" Content="Przeglądaj" HorizontalAlignment="Right"></Button>-->
-        <ComboBox Grid.Row="1" ItemsSource="{Binding SongList}" DisplayMemberPath="Title" SelectedItem="{Binding SelectedSong}" />
+            <ComboBox Grid.Row="0" Width="600" Margin="20" ItemsSource="{Binding SongList}" DisplayMemberPath="Title" SelectedItem="{Binding SelectedSong}" />
 
-        <Grid Grid.Row="2" Width="300" MouseWheel="Grid_MouseWheel">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal">
-                <Button Content="OPEN" Style="{StaticResource PlayerButtonStyle}" Click="Open_Executed"/>
-                <Separator />
-                <Button  Content="START" Style="{StaticResource PlayerButtonStyle}" Click="Play_Executed"/>
-                <Button Content="PAUZA" Style="{StaticResource PlayerButtonStyle}" Click="Pause_Executed"/>
-                <Button Content="STOP" Style="{StaticResource PlayerButtonStyle}" Click="Stop_Executed"/>
-            </StackPanel>
+            <Grid Grid.Row="1" Width="600" Margin="20" MouseWheel="Grid_MouseWheel">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="OPEN" Style="{StaticResource PlayerButtonStyle}" Click="Open_Executed"/>
+                    <Separator />
+                    <Button  Content="START" Style="{StaticResource PlayerButtonStyle}" Click="Play_Executed"/>
+                    <Button Content="PAUZA" Style="{StaticResource PlayerButtonStyle}" Click="Pause_Executed"/>
+                    <Button Content="STOP" Style="{StaticResource PlayerButtonStyle}" Click="Stop_Executed"/>
+                </StackPanel>
 
-            <MediaElement Name="mePlayer" Grid.Row="1" LoadedBehavior="Manual" Stretch="None"  Source="{Binding SelectedSong.Path}" />
+                <MediaElement Name="mePlayer" Grid.Row="1" LoadedBehavior="Manual" Stretch="Fill"  Source="{Binding SelectedSong.Path}" UnloadedBehavior="Manual" MediaOpened="Element_MediaOpened"/>
 
-            <StatusBar Grid.Row="2">
-                <StatusBar.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                        </Grid>
-                    </ItemsPanelTemplate>
-                </StatusBar.ItemsPanel>
-                <StatusBarItem>
-                    <TextBlock Name="lblProgressStatus1">00:00:00</TextBlock>
-                </StatusBarItem>
-                <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch">
-                    <Slider Name="sliProgress1" Thumb.DragStarted="sliProgress_DragStarted"  Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged" />
-                </StatusBarItem>
-                <!--<StatusBarItem Grid.Column="2">
+                <StatusBar Grid.Row="2">
+                    <StatusBar.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ItemsPanelTemplate>
+                    </StatusBar.ItemsPanel>
+                    <StatusBarItem>
+                        <TextBlock Name="lblProgressStatus1">00:00:00</TextBlock>
+                    </StatusBarItem>
+                    <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch">
+                        <Slider Name="sliProgress1" Thumb.DragStarted="sliProgress_DragStarted"  Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged" />
+                    </StatusBarItem>
+                    <!--<StatusBarItem Grid.Column="2">
                     <ProgressBar Name="pbVolume" Width="50" Height="12" Maximum="1" Value="{Binding ElementName=mePlayer, Path=Volume}" />
                 </StatusBarItem>-->
-            </StatusBar>
-            <Image Grid.Row="3" Source="{Binding SelectedSongLyrics}" Width="100" Height="100"/>
+                </StatusBar>
+            </Grid>
         </Grid>
+        <Image Margin="50,30" Grid.Column="1" Source="{Binding SelectedSongLyrics}" Stretch="UniformToFill"/>
     </Grid>
 </UserControl>

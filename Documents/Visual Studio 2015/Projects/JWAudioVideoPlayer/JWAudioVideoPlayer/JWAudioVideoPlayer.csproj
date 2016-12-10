@@ -81,6 +81,7 @@
     <Compile Include="Parameters.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Song.cs" />
+    <Compile Include="TimerMode.cs" />
     <Compile Include="ViewModels\MusicPlayerVm.cs" />
     <Compile Include="ViewModels\TimerVm.cs" />
     <Compile Include="ViewModels\VideoPlayerVm.cs" />

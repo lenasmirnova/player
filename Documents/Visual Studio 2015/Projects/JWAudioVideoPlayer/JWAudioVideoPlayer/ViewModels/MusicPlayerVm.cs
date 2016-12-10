@@ -53,9 +53,9 @@ namespace JWAudioVideoPlayer.ViewModels
         #region Methods
         private void InitializeLists()
         {
-            string lyricsPath = @"C:\Users\Eliza&Robert\Desktop\TEKST_PIESNI";
-            string songsPath = @"C:\Users\Eliza&Robert\Desktop\MELODIA_PIESNI";
-            SelectedSongLyrics = @"C:\Users\Eliza&Robert\Desktop\TEKST_PIESNI\1.png";
+            string lyricsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TEKST_PIESNI");
+            string songsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "MELODIA_PIESNI");
+          //  SelectedSongLyrics = @"C:\Users\Eliza&Robert\Desktop\TEKST_PIESNI\1.png";
             DirectoryInfo lyricsDirectory = new DirectoryInfo(lyricsPath);
             DirectoryInfo songsDirectory = new DirectoryInfo(songsPath);
 
