@@ -39,6 +39,5 @@
                 <Button Style="{StaticResource TimerButtonStyle}" Grid.Row="6" Content="ZEGAR" Margin="4" Command="{Binding ShowCurrentTimeCommand}"/>
             </Grid>
         </Grid>
-
     </Grid>
 </UserControl>

@@ -182,6 +182,36 @@
         </Setter>
     </Style>
 
+    <Style TargetType="Button" x:Key="CloseSecondScreenButtonStyle">
+        <Setter Property="Height" Value="20" />
+        <Setter Property="Width" Value="20" />
+        <Setter Property="Background" Value="Red" />
+        <Setter Property="BorderBrush" Value="Red" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid Background="Red" x:Name="playerButtonBorder">
+                        <Path Margin="3" Stretch="Fill" Width="12" Height="12" Fill="White" Data="F1 M 26.9166,22.1667L 37.9999,33.25L 49.0832,22.1668L 53.8332,26.9168L 42.7499,38L 53.8332,49.0834L 49.0833,53.8334L 37.9999,42.75L 26.9166,53.8334L 22.1666,49.0833L 33.25,38L 22.1667,26.9167L 26.9166,22.1667 Z"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Border.Background" TargetName="playerButtonBorder" Value="IndianRed" />
+                            <Setter Property="Border.BorderBrush" TargetName="playerButtonBorder" Value="IndianRed" />
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Border.Background" TargetName="playerButtonBorder" Value="DarkRed" />
+                            <Setter Property="Border.BorderBrush" TargetName="playerButtonBorder" Value="DarkRed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="TabItem">
         <Setter Property="Foreground" Value="{StaticResource ButtonFont}" />
         <Setter Property="FontWeight" Value="DemiBold" />

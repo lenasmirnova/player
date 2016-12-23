@@ -70,22 +70,39 @@ namespace JWAudioVideoPlayer
         {
             get { return _showSecondScreenCommand = new DelegateCommand(ShowScreen); }
         }
+
+        private DelegateCommand _closeSecondScreenCommand;
+        public DelegateCommand CloseSecondScreenCommand
+        {
+            get { return _closeSecondScreenCommand = new DelegateCommand(CloseScreen); }
+        }
         #endregion
         #endregion
 
         #region Methods
-
         private void ShowScreen()
         {
             ProjectedTabIndex = SelectedTabIndex;
-            ProjectorEnabled = true;
-
+            
             //if (ProjectorWindow == null || !ProjectorWindow.IsActive)
             if (ProjectorWindow == null)
             {
                 ProjectorWindow = new ProjectorWindowV();
                 ProjectorWindow.DataContext = this;
+            }
+            if (!ProjectorEnabled)
+            { 
                 ProjectorWindow.ShowOnSecondScreen();
+            }
+            ProjectorEnabled = true;
+        }
+        
+        private void CloseScreen()
+        {
+            ProjectorEnabled = false;
+            if (ProjectorWindow != null)
+            {
+                ProjectorWindow.Hide();
             }
         }
 

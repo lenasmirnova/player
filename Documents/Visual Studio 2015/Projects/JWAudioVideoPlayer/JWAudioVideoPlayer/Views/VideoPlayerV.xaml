@@ -12,59 +12,34 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <UserControl.CommandBindings>
-        <!--<CommandBinding Command="ApplicationCommands.Open" CanExecute="Open_CanExecute" Executed="Open_Executed" />-->
-        <!--<CommandBinding Command="MediaCommands.Play" CanExecute="Play_CanExecute" Executed="Play_Executed" />-->
-        <CommandBinding Command="MediaCommands.Pause" CanExecute="Pause_CanExecute" Executed="Pause_Executed" />
-        <CommandBinding Command="MediaCommands.Stop" CanExecute="Stop_CanExecute" Executed="Stop_Executed" />
-    </UserControl.CommandBindings>
-    <Grid Width="300" MouseWheel="Grid_MouseWheel">
+
+    <Grid Width="600" MouseWheel="Grid_MouseWheel" Margin="0,20,0,0" >
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <ToolBar>
-            <Button Width="30" Height="30" Background="Red" Click="Open_Executed"  />
-            <Separator />
-            <Button Width="30"  Background="Green" Height="30" Click="Play_Executed"/>
-            <Button Command="MediaCommands.Pause"/>
-            <Button Command="MediaCommands.Stop"/>
-        </ToolBar>
 
-        <MediaElement Name="mePlayer" Grid.Row="1" LoadedBehavior="Manual" Stretch="None" />
- 
-        <StatusBar Grid.Row="2">
-            <StatusBar.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                </ItemsPanelTemplate>
-            </StatusBar.ItemsPanel>
-            <StatusBarItem>
-                <TextBlock Name="lblProgressStatus">00:00:00</TextBlock>
-            </StatusBarItem>
-            <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Stretch">
-                <Slider Name="sliProgress" Thumb.DragStarted="sliProgress_DragStarted"  Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged" />
-            </StatusBarItem>
-            <!--<StatusBarItem Grid.Column="2">
-                <ProgressBar Name="pbVolume" Width="50" Height="12" Maximum="1" Value="{Binding ElementName=mePlayer, Path=Volume}" />
-            </StatusBarItem>-->
-        </StatusBar>
+        <Grid Background="Black">
+            <MediaElement Name="mePlayer" LoadedBehavior="Manual" Stretch="Uniform" UnloadedBehavior="Manual" />
+        </Grid>
+
+        <Grid Grid.Row="1" MouseWheel="Grid_MouseWheel"  Background="{StaticResource ButtonNormal}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Margin="4,0,0,0">
+                <Button Content="OPEN" Style="{StaticResource PlayerButtonStyle}" Click="Open_Executed"/>
+                <Button  Content="START" Style="{StaticResource PlayerButtonStyle}" Click="Play_Executed"/>
+                <Button Content="PAUZA" Style="{StaticResource PlayerButtonStyle}" Click="Pause_Executed"/>
+                <Button Content="STOP" Style="{StaticResource PlayerButtonStyle}" Click="Stop_Executed"/>
+            </StackPanel>
+
+            <TextBlock Margin="10" Grid.Column="1" Name="lblProgressStatus" Foreground="White" Background="{StaticResource ButtonNormal}">00:00:00</TextBlock>
+            <Slider Margin="10" Grid.Column="2"  Name="sliProgress" Thumb.DragStarted="sliProgress_DragStarted"  Thumb.DragCompleted="sliProgress_DragCompleted" ValueChanged="sliProgress_ValueChanged" 
+                                    Background="{StaticResource ButtonNormal}" HorizontalAlignment="Stretch"/>
+        </Grid>
     </Grid>
-    <!--<Grid>-->
-    <!--Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <MediaElement Width="200" Height="200" x:Name="player" Source="{Binding SourcePath}" LoadedBehavior="Manual"/>
-        <Button Grid.Row="2" Content="Play" Click="Button_OnClick" />
-        <Button Grid.Row="1" Content="Browse" Command="{Binding GetFileNameCommand}" />
-    </Grid>-->
 </UserControl>

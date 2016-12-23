@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace JWAudioVideoPlayer.Views
 {
@@ -16,6 +17,21 @@ namespace JWAudioVideoPlayer.Views
         public MusicPlayerV()
         {
             InitializeComponent();
+            
+            DispatcherTimer timer = new DispatcherTimer();
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += timer_Tick;
+            timer.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            if ((mePlayer.Source != null) && (mePlayer.NaturalDuration.HasTimeSpan) && (!userIsDraggingSlider1))
+            {
+                sliProgress1.Minimum = 0;
+                sliProgress1.Maximum = mePlayer.NaturalDuration.TimeSpan.TotalSeconds;
+                sliProgress1.Value = mePlayer.Position.TotalSeconds;
+            }
         }
 
         private bool mediaPlayerIsPlaying1 = false;

@@ -50,7 +50,7 @@ namespace JWAudioVideoPlayer.Views
         private void Open_Executed(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Media files (*.mp3;*.mpg;*.mpeg)|*.mp3;*.mpg;*.mpeg|All files (*.*)|*.*";
+            openFileDialog.Filter = "Media files (*.mp3;*.mpg;*.mpeg;*.mp4)|*.mp3;*.mpg;*.mpeg;*.mp4|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == true)
                 mePlayer.Source = new Uri(openFileDialog.FileName);
         }
@@ -73,7 +73,7 @@ namespace JWAudioVideoPlayer.Views
             e.CanExecute = mediaPlayerIsPlaying;
         }
 
-        private void Pause_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void Pause_Executed(object sender, RoutedEventArgs e)
         {
             mePlayer.Pause();
         }
@@ -83,7 +83,7 @@ namespace JWAudioVideoPlayer.Views
             e.CanExecute = mediaPlayerIsPlaying;
         }
 
-        private void Stop_Executed(object sender, ExecutedRoutedEventArgs e)
+        private void Stop_Executed(object sender, RoutedEventArgs e)
         {
             mePlayer.Stop();
             mediaPlayerIsPlaying = false;
